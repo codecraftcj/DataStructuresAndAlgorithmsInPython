@@ -46,13 +46,13 @@ class Node:
 
         if self.left:
             self.left.getNodesAtDepth(depth-1, nodes)
-        else:
-            nodes.extend([None]*2**(depth-1))
+        # else:
+        #     nodes.extend([None]*2**(depth-1))
         
         if self.right:
             self.right.getNodesAtDepth(depth-1, nodes)
-        else:
-            nodes.extend([None]*2**(depth-1))
+        # else:
+        #     nodes.extend([None]*2**(depth-1))
         return nodes
 
     def height(self, h=0):
@@ -83,5 +83,26 @@ class Tree:
 
     def height(self):
         return self.root.height()
+    def print(self):
+        
+        height = self.height()
+        for d in range(height+1):
+            print(d)
+            nodes = self.getNodesAtDepth(d)
+            print(nodes)
 
-    
+tree = Tree(Node(50))
+tree.root.left = Node(25)
+tree.root.right = Node(75)
+tree.root.left.left = Node(13)
+tree.root.left.right = Node(35)
+tree.root.left.right.right = Node(37)
+tree.root.right.left = Node(55)
+tree.root.right.right = Node(103)
+tree.root.left.left.left = Node(2)
+tree.root.left.left.right = Node(20)
+tree.root.right.left = Node(55)
+tree.root.right.right.right = Node(256)
+
+print(tree.getNodesAtDepth(3))
+tree.print()
