@@ -83,3 +83,5 @@ class Tree:
 
     def height(self):
         return self.root.height()
+
+    
